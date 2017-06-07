@@ -48,9 +48,16 @@ function [table] = writeBreathTableMBW(table,file,parameters,flag, signalCorrect
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Critical end tidal values and turnovers
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        if parameters.Simulation.fullOutput %full output selected
         table.criticalEndRatios=[2.5,3,4,5,6,7,9,12,15,18]/100;   % critical end values
         table.criticalTurnovers=[5,6,7,8];                        % critical turnover values
+        end
         
+        if parameters.Simulation.reducedOutput    %reduced output selected      
+            table.criticalEndRatios=[2.5,5]/100;   % critical end values
+            table.criticalTurnovers=[5,6,7,8]; 
+        end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Detection of MBW begin for each gas species in the list
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

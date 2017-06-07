@@ -92,6 +92,9 @@ function [Parameters]=setParametersSpirowareMassSpec(parameterFile,fromFile)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Simulation related parameters: discretization settings
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Simulation.fullOutput               =   1;              % output switch
+    Simulation.reducedOutput            =   0;              % output switch
+    
     Simulation.verb                     =    0;             % verbosity switch (controls degree of debugging output)
     Simulation.compatibility            =    0;             % compatibility switch (sets pre 4.8.1 variant of MBW end detection in MassSpec)
     Simulation.dt                       =    0.005;         % time increment (used only for visualization)

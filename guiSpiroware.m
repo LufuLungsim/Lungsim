@@ -22,7 +22,7 @@ function varargout = guiSpiroware(varargin)
 
 % Edit the above text to modify the response to help guiSpiroware
 
-% Last Modified by GUIDE v2.5 29-Mar-2017 11:03:47
+% Last Modified by GUIDE v2.5 06-Jun-2017 13:38:18
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -61,6 +61,7 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
+
 % UIWAIT makes guiSpiroware wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -95,6 +96,7 @@ if isempty(get(hObject,'UserData'))
     set(handles.output,'UserData',parameters);
 end
 initializeParameters(hObject, handles)
+set(handles.makeItEasyButton,'Value',0)
 
 % --- Outputs from this function are returned to the command line.
 function varargout = guiSpiroware_OutputFcn(hObject, eventdata, handles) 
@@ -2545,3 +2547,45 @@ set(handles.output,'UserData',parameters);
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of diffusionCorrection
+
+
+% --- Executes when selected object is changed in outputTypePanel.
+function outputTypePanel_SelectionChangeFcn(hObject, eventdata, handles)
+% hObject    handle to the selected object in outputTypePanel 
+% eventdata  structure with the following fields (see UIBUTTONGROUP)
+%	EventName: string 'SelectionChanged' (read only)
+%	OldValue: handle of the previously selected object or empty if none was selected
+%	NewValue: handle of the currently selected object
+% handles    structure with handles and user data (see GUIDATA)
+parameters=get(handles.output,'UserData');
+fullOutput = get(handles.fullOutputButton, 'Value');
+reducedOutput = get(handles.reducedOutput, 'Value');
+if fullOutput
+    parameters.Simulation.fullOutput = 1;
+    parameters.Simulation.reducedOutput = 0;
+    fprintf('Full output selected\n');
+end
+if reducedOutput
+    parameters.Simulation.fullOutput = 0;
+    parameters.Simulation.reducedOutput = 1;
+    fprintf('Reduced output selected\n');
+end
+
+set(handles.output,'UserData',parameters);
+
+
+% --- Executes on button press in makeItEasyButton.
+function makeItEasyButton_Callback(hObject, eventdata, handles)
+% hObject    handle to makeItEasyButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of makeItEasyButton
+hideThemAll = get(handles.makeItEasyButton, 'Value');
+if hideThemAll
+    set(handles.uipanel4, 'Visible', 'Off');
+else
+    set(handles.uipanel4, 'Visible', 'On');  
+end
+
+
