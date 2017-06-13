@@ -92,6 +92,9 @@ function [Parameters]=setParametersSpirowareMassSpec(parameterFile,fromFile)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Simulation related parameters: discretization settings
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Simulation.fullOutput               =   1;              % output switch
+    Simulation.reducedOutput            =   0;              % output switch
+    
     Simulation.verb                     =    0;             % verbosity switch (controls degree of debugging output)
     Simulation.compatibility            =    0;             % compatibility switch (sets pre 4.8.1 variant of MBW end detection in MassSpec)
     Simulation.dt                       =    0.005;         % time increment (used only for visualization)
@@ -113,7 +116,7 @@ function [Parameters]=setParametersSpirowareMassSpec(parameterFile,fromFile)
     Simulation.sbwPercent               =    0;             % old SBW file (CO2 in %)
     Simulation.heMbw                    =    0;             % old He-based MBW file (CO2 in %)
     
-    Simulation.graphState               =    1;             % no graphs are produced during batch operations
+    Simulation.graphState               =    0;             % no graphs are produced during batch operations
     Simulation.interactiveYes           =    0;             % allow for interactive slope fits
     Simulation.interactiveNo            =    1;             % allow for interactive slope fits
     Simulation.interactiveDeviation     =    0;             % allow for interactive slope fits
@@ -164,7 +167,7 @@ function [Parameters]=setParametersSpirowareMassSpec(parameterFile,fromFile)
     Simulation.uBoundStar               =    3.0;           % upper bound to TO to evaluated ScondStar
     Simulation.lBoundStar               =    0;             % lower bound to TO to evaluated ScondSta
     
-    Simulation.CapnoIndices             =    1;             % Evaluation of capno indices according to "Volumetric Capnography in Infants with BPD", J. pediatr 164, p283-8 (2014)
+    Simulation.CapnoIndices             =    0;             % Evaluation of capno indices according to "Volumetric Capnography in Infants with BPD", J. pediatr 164, p283-8 (2014)
     Simulation.CapnoCheck               =    0;             % Interactive check of capno indices after completion of all breaths
     
     Simulation.tidalMeanState           =    0;             % include tidal means in log file
