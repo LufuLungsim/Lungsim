@@ -481,14 +481,10 @@ if bFileState==1
     %%Report, BTPS, Operation Parameter, Signal Output, per file
     %%calibration
     %set(handle,'enable','off'); 
-    set(findall(handles.calibrationAdvancedPanel, '-property', 'enable'), 'enable', 'off')
-    set(findall(handles.outputFormatPanel, '-property', 'enable'), 'enable', 'off')
-    set(findall(handles.fileCalibration, '-property', 'enable'), 'enable', 'off')
+    %set(findall(calibrationAdvancedPanel, '-property', 'enable'), 'enable', 'off')
+
 else
     %%TODO alles obige entsperren
-    set(findall(handles.calibrationAdvancedPanel, '-property', 'enable'), 'enable', 'on')
-    set(findall(handles.outputFormatPanel, '-property', 'enable'), 'enable', 'on')
-    set(findall(handles.fileCalibration, '-property', 'enable'), 'enable', 'on')
 end
 
 sbwMmState=get(handles.sbwMmInput,'Value');
